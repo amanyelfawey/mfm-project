@@ -7,9 +7,11 @@ import { TestimonialsPage } from '@/pages/TestimonialsPage'
 import { FaqPage } from '@/pages/FaqPage'
 import { ContactPage } from '@/pages/ContactPage'
 
+const basename = import.meta.env.BASE_URL.replace(/\/$/, '')
+
 function App() {
   return (
-    <BrowserRouter>
+    <BrowserRouter basename={basename}>
       <Routes>
         <Route element={<Layout />}>
           <Route index element={<HomePage />} />
