@@ -5,34 +5,10 @@ export interface MarbleSwatch {
 }
 
 export const marbleSwatches: MarbleSwatch[] = [
-  {
-    id: 'statuario',
-    name: 'Statuario',
-    image: '/images/gallery/material-statuario.webp',
-  },
-  {
-    id: 'carrara',
-    name: 'Carrara',
-    image: '/images/gallery/material-carrara.webp',
-  },
-  {
-    id: 'beige',
-    name: 'Cream Beige',
-    image: '/images/gallery/material-beige.webp',
-  },
-  {
-    id: 'nero',
-    name: 'Nero Marquina',
-    image: '/images/gallery/material-nero.webp',
-  },
-  {
-    id: 'viola',
-    name: 'Calacatta Viola',
-    image: '/images/gallery/flooring-viola-marble.webp',
-  },
-  {
-    id: 'cream',
-    name: 'Marble Cream',
-    image: '/images/textures/marble-cream.webp',
-  },
+  { id: 'statuario', name: 'Statuario', image: '/images/marbles/9.webp' },
+  { id: 'carrara', name: 'Carrara', image: '/images/marbles/10.webp' },
+  { id: 'beige', name: 'Cream Beige', image: '/images/marbles/2.webp' },
+  { id: 'nero', name: 'Nero Marquina', image: '/images/marbles/6.webp' },
+  { id: 'cream', name: 'Marble Cream', image: '/images/marbles/7.webp' },
+  { id: 'soft', name: 'Soft Grey', image: '/images/marbles/3.webp' },
 ]

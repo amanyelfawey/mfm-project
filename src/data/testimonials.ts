@@ -8,7 +8,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'The Calacatta marble they sourced for our kitchen is simply breathtaking. Every vein tells a story. MFM Stone transformed our home with craftsmanship that feels truly bespoke.',
     rating: 5,
-    image: '/images/testimonials/client-1.jpg',
+    image: '/images/hero/1.webp',
   },
   {
     id: '2',
@@ -17,7 +17,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'From initial consultation to final installation, the team demonstrated an exceptional eye for detail. Our hotel lobby now makes an unforgettable first impression.',
     rating: 5,
-    image: '/images/testimonials/client-2.jpg',
+    image: '/images/hero/5.webp',
   },
   {
     id: '3',
@@ -26,7 +26,7 @@ export const testimonials: Testimonial[] = [
     quote:
       'They understood our vision immediately and delivered beyond expectation. The onyx vanity is the centrepiece of our master suite — pure luxury in every detail.',
     rating: 5,
-    image: '/images/testimonials/client-3.jpg',
+    image: '/images/hero/3.webp',
   },
   {
     id: '4',
@@ -35,6 +35,6 @@ export const testimonials: Testimonial[] = [
     quote:
       'Twenty years of expertise shows in every cut and polish. Our entire ground floor now flows seamlessly in polished marble. Worth every penny.',
     rating: 5,
-    image: '/images/testimonials/client-4.jpg',
+    image: '/images/hero/2.webp',
   },
 ]

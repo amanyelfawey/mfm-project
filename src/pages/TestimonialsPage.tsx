@@ -8,7 +8,7 @@ export function TestimonialsPage() {
         eyebrow="Our Testimonial"
         title="What Our Clients Say"
         description="Architects, designers, and homeowners on working with MFM Marble & Granite."
-        image="/images/textures/marble-cream.webp"
+        image="/images/marbles/7.webp"
       />
       <Testimonials hideHeader />
     </>

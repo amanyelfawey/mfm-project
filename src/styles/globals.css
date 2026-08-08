@@ -259,7 +259,7 @@
 
   .marble-texture-bg {
     background-color: var(--color-off-white);
-    background-image: url('/images/textures/marble-beige.webp');
+    background-image: url('/images/marbles/2.webp');
     background-size: cover;
     background-position: center;
   }

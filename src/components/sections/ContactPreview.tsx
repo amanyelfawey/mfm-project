@@ -9,7 +9,7 @@ export function ContactPreview() {
       <div
         className="absolute inset-0 opacity-20"
         style={{
-          backgroundImage: "url('/images/textures/marble-black.webp')",
+          backgroundImage: "url('/images/marbles/6.webp')",
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}

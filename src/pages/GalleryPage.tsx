@@ -8,7 +8,7 @@ export function GalleryPage() {
         eyebrow="Our Collection"
         title="Selected Works"
         description="A curated edit of marble slabs, kitchen islands, bathroom suites, cladding, and flooring — stone first, always."
-        image="/images/textures/marble-white.webp"
+        image="/images/marbles/9.webp"
       />
       <Gallery hideHeader />
     </>

@@ -8,7 +8,7 @@ export function ContactPage() {
         eyebrow="Contact"
         title="Begin Your Project"
         description="Tell us about your kitchen, bathroom, or commercial space — we will source the right stone."
-        image="/images/textures/marble-carrara.webp"
+        image="/images/marbles/10.webp"
       />
       <Contact hideHeader />
     </>

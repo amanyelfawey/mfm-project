@@ -13,7 +13,7 @@ export const services: ServiceItem[] = [
     number: '01',
     title: 'Premium Slab Supply',
     subtitle: 'SOURCING',
-    image: '/images/gallery/material-statuario.webp',
+    image: '/images/marbles/9.webp',
     description: 'Hand-selected marble and granite slabs from trusted quarries.',
   },
   {
@@ -21,7 +21,7 @@ export const services: ServiceItem[] = [
     number: '02',
     title: 'Precision Fabrication',
     subtitle: 'CRAFTING',
-    image: '/images/gallery/kitchen-waterfall-island.webp',
+    image: '/images/gallery/g37.webp',
     description: 'CNC cutting, polishing, and edge profiles finished to millimetre accuracy.',
   },
   {
@@ -29,7 +29,7 @@ export const services: ServiceItem[] = [
     number: '03',
     title: 'Expert Installation',
     subtitle: 'FINISHING',
-    image: '/images/gallery/bathroom-panda-gold.webp',
+    image: '/images/gallery/g04.webp',
     description: 'Book-matched cladding, islands, and floors installed on site.',
   },
 ]

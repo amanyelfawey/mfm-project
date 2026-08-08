@@ -12,7 +12,7 @@ export function PageHero({
   eyebrow,
   title,
   description,
-  image = '/images/textures/marble-black.webp',
+  image = '/images/marbles/6.webp',
 }: PageHeroProps) {
   return (
     <section className="relative flex min-h-[42vh] items-end overflow-hidden bg-charcoal sm:min-h-[48vh] md:min-h-[58vh]">

@@ -9,7 +9,7 @@ export function AboutPage() {
         eyebrow="About Us"
         title="Crafted in Stone"
         description="Two decades of sourcing, cutting, and installing the finest marble and granite across London."
-        image="/images/textures/marble-beige.webp"
+        image="/images/marbles/2.webp"
       />
       <About hideHeading />
       <Services showCta={false} />

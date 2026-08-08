@@ -5,36 +5,54 @@ import { ArrowRight } from 'lucide-react'
 
 const scenes = [
   {
-    id: 'statuario',
-    label: 'Statuario',
-    vein: '/images/textures/marble-white.webp',
-    project: '/images/gallery/bathroom-panda-gold.webp',
-    caption: 'Bathroom cladding',
-    line: 'Stone that holds light.',
-  },
-  {
-    id: 'nero',
-    label: 'Nero',
-    vein: '/images/textures/marble-black.webp',
-    project: '/images/gallery/kitchen-waterfall-island.webp',
+    id: 'calacatta',
+    label: 'Calacatta',
+    vein: '/images/hero/1.webp',
+    project: '/images/hero/1.webp',
     caption: 'Kitchen island',
-    line: 'Depth carved in granite.',
+    line: 'A monolithic island in luminous white stone.',
+    description:
+      'Polished white marble with soft grey veins — sharp architectural edges against dark cabinetry, finished with quiet chrome.',
   },
   {
-    id: 'beige',
-    label: 'Beige',
-    vein: '/images/textures/marble-beige.webp',
-    project: '/images/gallery/flooring-beige-marble.webp',
-    caption: 'Marble flooring',
-    line: 'Warmth underfoot.',
+    id: 'nero-kitchen',
+    label: 'Nero Island',
+    vein: '/images/hero/2.webp',
+    project: '/images/hero/2.webp',
+    caption: 'Entertaining kitchen',
+    line: 'Dark stone, cut for evening light.',
+    description:
+      'Charcoal marble with jagged white veining — a sculpted island and sink before a gold-lit niche of crystal and bronze.',
   },
   {
-    id: 'viola',
-    label: 'Viola',
-    vein: '/images/gallery/cladding-viola-wall.webp',
-    project: '/images/gallery/bathroom-viola-suite.webp',
-    caption: 'Feature wall',
-    line: 'Veining as architecture.',
+    id: 'spa',
+    label: 'Spa Suite',
+    vein: '/images/hero/3.webp',
+    project: '/images/hero/3.webp',
+    caption: 'Marble bathroom',
+    line: 'A dark-stone sanctuary, lit like a hotel suite.',
+    description:
+      'Floor-to-ceiling dark marble, warm fluted wood, brushed gold fittings, and a glowing circular mirror for spa-level calm.',
+  },
+  {
+    id: 'nero-bath',
+    label: 'Nero Bath',
+    vein: '/images/hero/4.webp',
+    project: '/images/hero/4.webp',
+    caption: 'Bathroom vanity',
+    line: 'Black marble walls. White stone under hand.',
+    description:
+      'Dramatic black marble cladding with white and gold veins — floating vanity, vessel sink, and soft backlight.',
+  },
+  {
+    id: 'open-plan',
+    label: 'Open Plan',
+    vein: '/images/hero/5.webp',
+    project: '/images/hero/5.webp',
+    caption: 'Kitchen & dining',
+    line: 'Stone that carries the whole room.',
+    description:
+      'White marble island, veined floors, and dark cabinetry — open-plan living shaped around natural stone and warm LED lines.',
   },
 ]
 
@@ -81,7 +99,6 @@ export function Hero() {
       </motion.div>
 
       <div className="container-luxe relative z-10 grid gap-8 py-10 pb-28 sm:gap-10 sm:py-14 sm:pb-32 md:py-16 lg:min-h-[calc(100svh-88px)] lg:grid-cols-12 lg:items-center lg:gap-8 lg:py-20 lg:pb-36">
-        {/* Copy */}
         <div className="order-1 lg:col-span-6 xl:col-span-5">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -107,7 +124,7 @@ export function Hero() {
                     backgroundPosition: 'center',
                     WebkitBackgroundClip: 'text',
                     backgroundClip: 'text',
-                    WebkitTextStroke: '1px rgba(201,164,92,0.35)',
+                    WebkitTextStroke: '1px color-mix(in srgb, var(--color-gold) 40%, transparent)',
                   }}
                   aria-hidden="true"
                 >
@@ -129,10 +146,18 @@ export function Hero() {
               </motion.h1>
             </AnimatePresence>
 
-            <p className="mt-4 max-w-sm text-sm font-light leading-relaxed text-white/60 sm:mt-6 sm:text-base">
-              Hand-selected marble and granite — fabricated and installed for kitchens,
-              bathrooms, cladding, and floors.
-            </p>
+            <AnimatePresence mode="wait">
+              <motion.p
+                key={scene.description}
+                initial={{ opacity: 0, y: 12 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
+                className="mt-4 max-w-sm text-sm font-light leading-relaxed text-white/60 sm:mt-6 sm:text-base"
+              >
+                {scene.description}
+              </motion.p>
+            </AnimatePresence>
 
             <div className="mt-7 flex w-full flex-col gap-3 sm:mt-10 sm:w-auto sm:flex-row sm:flex-wrap sm:gap-4">
               <Link to="/gallery" className="btn-gold w-full sm:w-auto">
@@ -146,7 +171,6 @@ export function Hero() {
           </motion.div>
         </div>
 
-        {/* Aperture */}
         <div className="order-2 lg:col-span-6 xl:col-span-7">
           <motion.div
             style={{ y: apertureY }}
@@ -196,7 +220,6 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Material navigator */}
       <div className="absolute bottom-0 left-0 right-0 z-20 border-t border-white/10 bg-black/50 backdrop-blur-md">
         <div className="container-luxe scrollbar-hide flex snap-x snap-mandatory gap-2 overflow-x-auto py-3 sm:gap-3 sm:py-4 md:gap-4">
           {scenes.map((item, i) => {
@@ -216,7 +239,7 @@ export function Hero() {
                     isActive ? 'border-gold' : 'border-white/20'
                   }`}
                 >
-                  <img src={item.vein} alt="" className="h-full w-full object-cover" />
+                  <img src={item.project} alt="" className="h-full w-full object-cover" />
                 </span>
                 <span className="min-w-0">
                   <span className="block text-[9px] uppercase tracking-[0.18em] text-gold/80 sm:text-[10px]">

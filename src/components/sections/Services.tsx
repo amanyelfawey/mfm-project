@@ -1,9 +1,7 @@
 import { Link } from 'react-router-dom'
-import { ArrowRight, Layers, Hammer, Sparkles } from 'lucide-react'
+import { ArrowRight } from 'lucide-react'
 import { services } from '@/data/services'
 import { FadeInSection } from '@/components/shared/FadeInSection'
-
-const icons = [Layers, Hammer, Sparkles]
 
 interface ServicesProps {
   showCta?: boolean
@@ -11,74 +9,75 @@ interface ServicesProps {
 
 export function Services({ showCta = true }: ServicesProps) {
   return (
-    <section className="section-pad marble-texture-bg relative overflow-hidden">
-      <div className="absolute inset-0 bg-off-white/88" />
-
-      <div className="container-luxe relative z-10">
-        <div className="mb-8 flex flex-col gap-5 sm:mb-12 sm:gap-6 md:mb-14 md:flex-row md:items-end md:justify-between">
-          <FadeInSection>
-            <div className="mb-4 flex items-center gap-4">
-              <span className="h-px w-8 bg-gold sm:w-10" />
-              <p className="text-xs uppercase tracking-[0.22em] text-gold">What We Offer</p>
+    <section className="bg-off-white py-14 text-black sm:py-16 lg:py-20">
+      <div className="container-luxe">
+        <div className="grid gap-10 lg:grid-cols-12 lg:gap-12 lg:items-end">
+          <FadeInSection className="lg:col-span-5">
+            <div className="mb-3 flex items-center gap-3 sm:mb-4">
+              <span className="h-px w-8 bg-gold" />
+              <p className="text-[10px] uppercase tracking-[0.26em] text-gold sm:text-[11px]">
+                What We Offer
+              </p>
             </div>
-            <h2 className="font-display text-3xl font-light text-charcoal sm:text-4xl md:text-5xl lg:text-6xl">
-              Provides Best Services
+            <h2 className="max-w-[12ch] font-display text-[2rem] font-light leading-[1.08] tracking-[-0.03em] text-charcoal sm:text-4xl md:text-5xl">
+              Three disciplines.
+              <span className="mt-1 block text-gold">One standard.</span>
             </h2>
-          </FadeInSection>
-
-          {showCta && (
-            <FadeInSection delay={0.1}>
-              <Link to="/gallery" className="btn-dark w-full sm:w-auto">
-                Read More
+            <p className="mt-4 max-w-sm text-sm font-light leading-relaxed text-gray sm:mt-5">
+              Sourcing, crafting, and finishing — kept under one roof so every surface stays true
+              from slab to install.
+            </p>
+            {showCta && (
+              <Link to="/gallery" className="btn-dark mt-6 sm:mt-8">
+                Explore work
                 <ArrowRight size={14} />
               </Link>
-            </FadeInSection>
-          )}
-        </div>
+            )}
+          </FadeInSection>
 
-        <div className="grid gap-6 sm:gap-8 md:grid-cols-2 lg:grid-cols-3">
-          {services.map((service, i) => {
-            const Icon = icons[i] ?? Layers
-            return (
+          <div className="grid gap-3 sm:grid-cols-3 sm:gap-3 lg:col-span-7 lg:gap-4">
+            {services.map((service, i) => (
               <FadeInSection key={service.id} delay={i * 0.1}>
-                <article className="group relative h-full bg-white shadow-[0_20px_50px_rgba(0,0,0,0.08)] transition-transform duration-700 hover:-translate-y-2">
-                  <div className="relative aspect-[16/10] overflow-hidden sm:aspect-[4/3]">
-                    <img
-                      src={service.image}
-                      alt={service.title}
-                      className="image-polish h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
-                      style={{ transitionTimingFunction: 'var(--ease-luxe)' }}
-                      loading="lazy"
-                    />
-                  </div>
+                <Link
+                  to="/gallery"
+                  className={`group relative flex min-h-[280px] flex-col justify-end overflow-hidden sm:min-h-[360px] lg:min-h-[420px] ${
+                    i === 1 ? 'sm:mt-8 lg:mt-12' : i === 2 ? 'sm:mt-4 lg:mt-6' : ''
+                  }`}
+                >
+                  <img
+                    src={service.image}
+                    alt=""
+                    className="image-polish absolute inset-0 h-full w-full object-cover transition-transform duration-700 group-hover:scale-105"
+                    style={{ transitionTimingFunction: 'var(--ease-luxe)' }}
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/35 to-black/10 transition-opacity duration-500 group-hover:from-black/90" />
 
-                  <div className="relative px-5 pb-8 pt-10 sm:px-7 sm:pb-10 sm:pt-12">
-                    <div className="absolute -top-7 left-5 flex h-14 w-14 items-center justify-center rounded-full bg-gold text-white shadow-[0_10px_25px_rgba(201,164,92,0.45)] sm:-top-8 sm:left-7 sm:h-16 sm:w-16">
-                      <Icon size={22} strokeWidth={1.5} className="sm:hidden" />
-                      <Icon size={26} strokeWidth={1.5} className="hidden sm:block" />
-                    </div>
-
-                    <span
-                      className="pointer-events-none absolute right-4 top-5 font-display text-5xl font-light text-charcoal/[0.06] sm:right-5 sm:top-6 sm:text-7xl"
-                      aria-hidden="true"
-                    >
+                  <div className="relative z-10 flex h-full flex-col justify-between p-4 sm:p-5">
+                    <span className="font-display text-3xl font-light text-white/35 sm:text-4xl">
                       {service.number}
                     </span>
 
-                    <h3 className="relative font-display text-xl font-light text-charcoal sm:text-2xl">
-                      {service.title}
-                    </h3>
-                    <p className="relative mt-2 text-[10px] uppercase tracking-[0.18em] text-gold sm:text-[11px] sm:tracking-[0.2em]">
-                      {service.subtitle}
-                    </p>
-                    <p className="relative mt-3 text-sm font-light leading-relaxed text-gray sm:mt-4">
-                      {service.description}
-                    </p>
+                    <div>
+                      <p className="text-[10px] uppercase tracking-[0.22em] text-gold">
+                        {service.subtitle}
+                      </p>
+                      <h3 className="mt-1.5 font-display text-xl font-light leading-tight text-white sm:text-2xl">
+                        {service.title}
+                      </h3>
+                      <p className="mt-2 text-sm font-light leading-relaxed text-white/70 sm:mt-3 md:max-h-0 md:overflow-hidden md:opacity-0 md:transition-all md:duration-500 md:group-hover:max-h-28 md:group-hover:opacity-100">
+                        {service.description}
+                      </p>
+                      <span className="mt-3 inline-flex items-center gap-1.5 text-[10px] uppercase tracking-[0.18em] text-gold opacity-80 transition-opacity group-hover:opacity-100">
+                        View
+                        <ArrowRight size={12} />
+                      </span>
+                    </div>
                   </div>
-                </article>
+                </Link>
               </FadeInSection>
-            )
-          })}
+            ))}
+          </div>
         </div>
       </div>
     </section>
