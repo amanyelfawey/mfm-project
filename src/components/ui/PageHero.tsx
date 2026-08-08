@@ -1,5 +1,6 @@
 import { motion } from 'framer-motion'
 import { revealMask, staggerContainer } from '@/lib/motion'
+import { asset } from '@/lib/asset'
 
 interface PageHeroProps {
   eyebrow: string
@@ -17,7 +18,7 @@ export function PageHero({
   return (
     <section className="relative flex min-h-[42vh] items-end overflow-hidden bg-charcoal sm:min-h-[48vh] md:min-h-[58vh]">
       <div className="absolute inset-0">
-        <img src={image} alt="" className="image-polish h-full w-full object-cover" />
+        <img src={asset(image)} alt="" className="image-polish h-full w-full object-cover" />
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/70 to-charcoal/40" />
       </div>
 

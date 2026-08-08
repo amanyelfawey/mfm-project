@@ -2,8 +2,9 @@ import { useEffect, useRef, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { AnimatePresence, motion, useScroll, useTransform } from 'framer-motion'
 import { ArrowRight } from 'lucide-react'
+import { asset } from '@/lib/asset'
 
-const scenes = [
+const rawScenes = [
   {
     id: 'calacatta',
     label: 'Calacatta',
@@ -55,6 +56,12 @@ const scenes = [
       'White marble island, veined floors, and dark cabinetry — open-plan living shaped around natural stone and warm LED lines.',
   },
 ]
+
+const scenes = rawScenes.map((scene) => ({
+  ...scene,
+  vein: asset(scene.vein),
+  project: asset(scene.project),
+}))
 
 export function Hero() {
   const [active, setActive] = useState(0)

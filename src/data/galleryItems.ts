@@ -1,6 +1,7 @@
 import type { GalleryItem } from '@/types'
+import { asset } from '@/lib/asset'
 
-export const galleryItems: GalleryItem[] = [
+const items: GalleryItem[] = [
   // Materials — slab photography
   { id: 'm1', title: 'White Vein Slab', material: 'Natural marble', category: 'Materials', image: '/images/marbles/9.webp' },
   { id: 'm2', title: 'Nero Marquina', material: 'Black marble', category: 'Materials', image: '/images/marbles/6.webp' },
@@ -52,3 +53,8 @@ export const galleryItems: GalleryItem[] = [
   { id: 'g36', title: 'Kitchen Island', material: 'Natural stone', category: 'Kitchens', image: '/images/gallery/g36.webp' },
   { id: 'g37', title: 'Granite Waterfall', material: 'Polished granite', category: 'Kitchens', image: '/images/gallery/g37.webp' },
 ]
+
+export const galleryItems: GalleryItem[] = items.map((item) => ({
+  ...item,
+  image: asset(item.image),
+}))

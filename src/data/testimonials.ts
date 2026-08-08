@@ -1,6 +1,7 @@
 import type { Testimonial } from '@/types'
+import { asset } from '@/lib/asset'
 
-export const testimonials: Testimonial[] = [
+const items: Testimonial[] = [
   {
     id: '1',
     name: 'Victoria Ashford',
@@ -38,3 +39,8 @@ export const testimonials: Testimonial[] = [
     image: '/images/hero/2.webp',
   },
 ]
+
+export const testimonials: Testimonial[] = items.map((item) => ({
+  ...item,
+  image: asset(item.image),
+}))

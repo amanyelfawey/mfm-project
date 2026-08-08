@@ -1,3 +1,5 @@
+import { asset } from '@/lib/asset'
+
 export interface ServiceItem {
   id: string
   number: string
@@ -7,7 +9,7 @@ export interface ServiceItem {
   description: string
 }
 
-export const services: ServiceItem[] = [
+const items: ServiceItem[] = [
   {
     id: 'supply',
     number: '01',
@@ -33,3 +35,8 @@ export const services: ServiceItem[] = [
     description: 'Book-matched cladding, islands, and floors installed on site.',
   },
 ]
+
+export const services: ServiceItem[] = items.map((item) => ({
+  ...item,
+  image: asset(item.image),
+}))

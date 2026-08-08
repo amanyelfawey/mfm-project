@@ -4,6 +4,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { testimonials } from '@/data/testimonials'
 import { FadeInSection } from '@/components/shared/FadeInSection'
+import { asset } from '@/lib/asset'
 
 const AUTOPLAY_INTERVAL = 7000
 
@@ -42,7 +43,11 @@ export function Testimonials({
   const active = testimonials[current]!
 
   return (
-    <section id="testimonials" className="section-pad marble-texture-bg relative overflow-hidden">
+    <section
+      id="testimonials"
+      className="section-pad relative overflow-hidden bg-off-white bg-cover bg-center"
+      style={{ backgroundImage: `url('${asset('/images/marbles/2.webp')}')` }}
+    >
       <div className="absolute inset-0 bg-off-white/90" />
 
       <div className="container-luxe relative z-10">

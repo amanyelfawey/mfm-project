@@ -257,13 +257,6 @@
     display: none;
   }
 
-  .marble-texture-bg {
-    background-color: var(--color-off-white);
-    background-image: url('/images/marbles/2.webp');
-    background-size: cover;
-    background-position: center;
-  }
-
   .diagonal-divider {
     clip-path: polygon(12% 0, 100% 0, 100% 100%, 0 100%);
   }

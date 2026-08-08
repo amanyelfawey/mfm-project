@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { ArrowRight } from 'lucide-react'
 import { CONTACT } from '@/lib/constants'
 import { FadeInSection } from '@/components/shared/FadeInSection'
+import { asset } from '@/lib/asset'
 
 export function ContactPreview() {
   return (
@@ -9,7 +10,7 @@ export function ContactPreview() {
       <div
         className="absolute inset-0 opacity-20"
         style={{
-          backgroundImage: "url('/images/marbles/6.webp')",
+          backgroundImage: `url('${asset('/images/marbles/6.webp')}')`,
           backgroundSize: 'cover',
           backgroundPosition: 'center',
         }}
