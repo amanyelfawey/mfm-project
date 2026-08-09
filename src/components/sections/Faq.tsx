@@ -4,7 +4,7 @@ import { AnimatePresence, motion } from 'framer-motion'
 import { faqItems } from '@/data/faqItems'
 import { FadeInSection } from '@/components/shared/FadeInSection'
 import { AnimatedCounter } from '@/components/ui/AnimatedCounter'
-import { asset } from '@/lib/asset'
+import faqImage from '@/assets/faq/1.jpg'
 
 interface FaqProps {
   hideHeader?: boolean
@@ -20,8 +20,8 @@ export function Faq({ hideHeader = false }: FaqProps) {
           <FadeInSection className="relative mb-8 lg:col-span-5 lg:mb-0 lg:pb-12">
             <div className="relative aspect-[4/5] max-h-[420px] overflow-hidden sm:max-h-none">
               <img
-                src={asset('/images/marbles/10.webp')}
-                alt="White marble slab with grey veining"
+                src={faqImage}
+                alt="marbles"
                 className="image-polish h-full w-full object-cover"
                 loading="lazy"
               />

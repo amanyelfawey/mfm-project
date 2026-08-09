@@ -1,9 +1,9 @@
 export const BRAND = {
   name: 'MFM Marble & Granite',
-  tagline: 'Marble And Natural Stone, Crafted For Legacy',
+  tagline: 'Marble & Granite Crafted for Legacy',
   description:
-    'Premium marble, granite, and natural stone surfaces for discerning residential and commercial clients across London.',
-  shortTagline: "London's finest natural stone specialists since 2004.",
+    'From luxury residences to landmark commercial projects, we deliver premium marble and granite solutions with uncompromising quality, precision, and craftsmanship.',
+  shortTagline: "London's finest marble and granite specialists since 2004.",
 } as const
 
 export const CONTACT = {
@@ -23,8 +23,8 @@ export const SOCIAL = {
 } as const
 
 export const STATS = [
-  { value: 20, suffix: '+', label: 'Years Experience' },
-  { value: 500, suffix: '+', label: 'Projects Completed' },
+  { value: 6, suffix: '+', label: 'Years Experience' },
+  { value: 50, suffix: '+', label: 'Projects Completed' },
   { value: 100, suffix: '%', label: 'Natural Stone' },
 ] as const
 

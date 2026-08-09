@@ -29,13 +29,13 @@ export function Navbar() {
       >
         <div className="container-luxe flex h-[72px] items-center justify-between gap-3 sm:h-[78px] sm:gap-4 lg:h-[88px] lg:gap-6">
           <Link to="/" className="flex min-w-0 items-center gap-2 text-white sm:gap-3">
-            <LogoMark className="h-8 w-8 shrink-0 text-gold sm:h-9 sm:w-9" />
+            <LogoMark className="h-12 w-12 shrink-0 text-gold sm:h-12 sm:w-12" />
             <span className="min-w-0 leading-tight">
               <span className="block truncate font-display text-lg tracking-wide sm:text-xl md:text-2xl">
-                MFM Marble
+                MFM 
               </span>
               <span className="hidden text-[10px] uppercase tracking-[0.22em] text-gold/90 sm:block">
-                &amp; Granite
+               Marble &amp; Granite
               </span>
             </span>
           </Link>
