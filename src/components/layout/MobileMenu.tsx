@@ -76,12 +76,20 @@ export function MobileMenu({ isOpen, onClose }: MobileMenuProps) {
               Get a Quote
               <ArrowRight size={14} />
             </Link>
-            <a
-              href={`tel:${CONTACT.phone.replace(/\s/g, '')}`}
-              className="block text-center text-sm tracking-[0.15em] text-gray"
-            >
-              {CONTACT.phoneDisplay}
-            </a>
+            <div className="flex flex-col gap-1.5 text-center">
+              <a
+                href={`tel:${CONTACT.phone.replace(/\s/g, '')}`}
+                className="block text-sm tracking-[0.15em] text-gray transition-colors hover:text-gold"
+              >
+                {CONTACT.phoneDisplay}
+              </a>
+              <a
+                href={`tel:${CONTACT.phone2.replace(/\s/g, '')}`}
+                className="block text-sm tracking-[0.15em] text-gray transition-colors hover:text-gold"
+              >
+                {CONTACT.phone2Display}
+              </a>
+            </div>
           </div>
         </motion.div>
       )}

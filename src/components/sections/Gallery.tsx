@@ -1,17 +1,18 @@
 import { useState, useMemo } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
-import { galleryItems } from '@/data/galleryItems'
+import { projects } from '@/data/projects'
 import type { GalleryCategory } from '@/lib/constants'
-import type { GalleryItem } from '@/types'
+import type { ProjectItem } from '@/types'
 import { GalleryFilter } from '@/components/ui/GalleryFilter'
 import { GalleryLightbox } from '@/components/ui/GalleryLightbox'
 import { FadeInSection } from '@/components/shared/FadeInSection'
+import { Images, ArrowRight } from 'lucide-react'
 
-function GalleryTile({
-  item,
+function ProjectTile({
+  project,
   onClick,
 }: {
-  item: GalleryItem
+  project: ProjectItem
   onClick: () => void
 }) {
   const [loaded, setLoaded] = useState(false)
@@ -20,24 +21,24 @@ function GalleryTile({
     <motion.button
       type="button"
       layout
-      layoutId={`gallery-${item.id}`}
+      layoutId={`project-${project.id}`}
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
       onClick={onClick}
-      className={`group relative cursor-pointer overflow-hidden ${
-        item.wide ? 'md:col-span-2' : ''
+      className={`group relative cursor-pointer overflow-hidden rounded-sm text-left ${
+        project.wide ? 'md:col-span-2' : ''
       }`}
     >
       <div
         className={`relative overflow-hidden ${
-          item.wide ? 'aspect-[4/5] sm:aspect-[16/10]' : 'aspect-[4/5]'
+          project.wide ? 'aspect-[4/5] sm:aspect-[16/10]' : 'aspect-[4/5]'
         }`}
       >
         <img
-          src={item.image}
-          alt={`${item.title} — ${item.material}`}
+          src={project.coverImage}
+          alt={`${project.title} — ${project.material}`}
           loading="lazy"
           onLoad={() => setLoaded(true)}
           className={`image-polish h-full w-full object-cover transition-all duration-700 group-hover:scale-[1.04] ${
@@ -46,16 +47,35 @@ function GalleryTile({
           style={{ transitionTimingFunction: 'var(--ease-luxe)' }}
         />
 
-        {/* Always visible on touch; fade intensifies on hover for desktop */}
-        <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/30 to-transparent opacity-90 transition-opacity duration-700 md:opacity-0 md:group-hover:opacity-100" />
+        {/* Overlay gradient */}
+        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/35 to-black/10 opacity-90 transition-opacity duration-700 md:opacity-75 md:group-hover:opacity-95" />
         <div className="absolute inset-0 border border-gold/0 transition-colors duration-700 group-hover:border-gold/50" />
 
-        <div className="absolute inset-x-0 bottom-0 p-4 text-left transition-all duration-700 sm:p-6 md:translate-y-3 md:opacity-0 md:group-hover:translate-y-0 md:group-hover:opacity-100">
-          <p className="eyebrow mb-1 sm:mb-2">{item.category}</p>
-          <h3 className="font-display text-lg font-light text-white sm:text-xl">{item.title}</h3>
-          <p className="mt-1 text-[11px] font-light tracking-[0.08em] text-white/60 sm:text-xs">
-            {item.material}
+        {/* Top Badges: Category & Photo count */}
+        <div className="absolute left-3 top-3 right-3 flex items-center justify-between sm:left-4 sm:top-4 sm:right-4">
+          <span className="rounded-xs border border-white/20 bg-black/40 px-2.5 py-1 text-[9px] uppercase tracking-[0.2em] text-gold backdrop-blur-md">
+            {project.category}
+          </span>
+          <span className="flex items-center gap-1 rounded-xs border border-white/15 bg-black/40 px-2 py-1 text-[10px] font-light text-white backdrop-blur-md">
+            <Images size={12} className="text-gold" />
+            <span>{project.images.length} Photos</span>
+          </span>
+        </div>
+
+        {/* Bottom Details */}
+        <div className="absolute inset-x-0 bottom-0 p-4 text-left transition-all duration-500 sm:p-6">
+          <h3 className="font-display text-lg font-light text-white sm:text-xl md:text-2xl">
+            {project.title}
+          </h3>
+
+          <p className="mt-1 text-[11px] font-light tracking-[0.06em] text-gold-light sm:text-xs">
+            {project.material}
           </p>
+
+          <div className="mt-3 flex items-center gap-1.5 text-[10px] uppercase tracking-[0.18em] text-gold opacity-0 transition-opacity duration-500 md:group-hover:opacity-100">
+            <span>View Project</span>
+            <ArrowRight size={12} className="transition-transform group-hover:translate-x-1" />
+          </div>
         </div>
       </div>
     </motion.button>
@@ -63,29 +83,29 @@ function GalleryTile({
 }
 
 interface GalleryProps {
-  /** Hide the section title when a PageHero already introduces the page. */
   hideHeader?: boolean
 }
 
 export function Gallery({ hideHeader = false }: GalleryProps) {
   const [activeCategory, setActiveCategory] = useState<GalleryCategory>('All')
-  const [lightboxItem, setLightboxItem] = useState<GalleryItem | null>(null)
+  const [selectedProject, setSelectedProject] = useState<ProjectItem | null>(null)
 
-  const filtered = useMemo(
+  const filteredProjects = useMemo(
     () =>
       activeCategory === 'All'
-        ? galleryItems
-        : galleryItems.filter((item) => item.category === activeCategory),
+        ? projects
+        : projects.filter((item) => item.category === activeCategory),
     [activeCategory],
   )
 
-  const handleNavigate = (direction: 'prev' | 'next') => {
-    if (!lightboxItem) return
-    const idx = filtered.findIndex((i) => i.id === lightboxItem.id)
-    const nextIdx = direction === 'prev' ? idx - 1 : idx + 1
-    if (nextIdx >= 0 && nextIdx < filtered.length) {
-      setLightboxItem(filtered[nextIdx]!)
-    }
+  const handleNavigateProject = (direction: 'prev' | 'next') => {
+    if (!selectedProject) return
+    const idx = filteredProjects.findIndex((p) => p.id === selectedProject.id)
+    const nextIdx =
+      direction === 'prev'
+        ? (idx - 1 + filteredProjects.length) % filteredProjects.length
+        : (idx + 1) % filteredProjects.length
+    setSelectedProject(filteredProjects[nextIdx]!)
   }
 
   return (
@@ -100,10 +120,10 @@ export function Gallery({ hideHeader = false }: GalleryProps) {
             <FadeInSection>
               <div className="mb-4 flex items-center gap-4">
                 <span className="h-px w-8 bg-gold sm:w-10" />
-                <p className="text-xs uppercase tracking-[0.22em] text-gold">Our Collection</p>
+                <p className="text-xs uppercase tracking-[0.22em] text-gold">Portfolio</p>
               </div>
               <h2 className="font-display text-3xl font-light text-white sm:text-4xl md:text-6xl">
-                Selected Works
+                Our Projects
               </h2>
             </FadeInSection>
           )}
@@ -114,14 +134,14 @@ export function Gallery({ hideHeader = false }: GalleryProps) {
 
         <motion.div
           layout
-          className="grid grid-flow-row-dense grid-cols-1 gap-3 sm:grid-cols-2 sm:gap-4 lg:grid-cols-3"
+          className="grid grid-flow-row-dense grid-cols-1 gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3"
         >
           <AnimatePresence mode="popLayout">
-            {filtered.map((item) => (
-              <GalleryTile
-                key={item.id}
-                item={item}
-                onClick={() => setLightboxItem(item)}
+            {filteredProjects.map((project) => (
+              <ProjectTile
+                key={project.id}
+                project={project}
+                onClick={() => setSelectedProject(project)}
               />
             ))}
           </AnimatePresence>
@@ -129,10 +149,10 @@ export function Gallery({ hideHeader = false }: GalleryProps) {
       </div>
 
       <GalleryLightbox
-        item={lightboxItem}
-        items={filtered}
-        onClose={() => setLightboxItem(null)}
-        onNavigate={handleNavigate}
+        project={selectedProject}
+        projects={filteredProjects}
+        onClose={() => setSelectedProject(null)}
+        onNavigateProject={handleNavigateProject}
       />
     </section>
   )

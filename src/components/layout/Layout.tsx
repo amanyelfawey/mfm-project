@@ -4,6 +4,7 @@ import { MotionConfig } from 'framer-motion'
 import { Navbar } from '@/components/layout/Navbar'
 import { Footer } from '@/components/layout/Footer'
 import { ScrollToTopButton } from '@/components/shared/ScrollToTopButton'
+import { ScrollProgressBar } from '@/components/shared/ScrollProgressBar'
 import { GrainOverlay } from '@/components/shared/GrainOverlay'
 import { CustomCursor } from '@/components/shared/CustomCursor'
 
@@ -21,6 +22,7 @@ export function Layout() {
   return (
     <MotionConfig reducedMotion="user">
       <ScrollToTop />
+      <ScrollProgressBar />
       <CustomCursor />
       <GrainOverlay />
       <Navbar />

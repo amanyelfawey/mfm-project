@@ -34,7 +34,7 @@ const items: Testimonial[] = [
     name: 'Thomas & Sarah Chen',
     projectType: 'Full Home Flooring, Hampstead',
     quote:
-      'Twenty years of expertise shows in every cut and polish. Our entire ground floor now flows seamlessly in polished marble. Worth every penny.',
+      'Over seven years of dedicated craftsmanship shows in every cut and polish. Our entire ground floor now flows seamlessly in polished marble. Worth every penny.',
     rating: 5,
     image: '/images/hero/2.webp',
   },

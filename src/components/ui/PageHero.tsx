@@ -1,4 +1,5 @@
-import { motion } from 'framer-motion'
+import { useRef } from 'react'
+import { motion, useScroll, useTransform } from 'framer-motion'
 import { revealMask, staggerContainer } from '@/lib/motion'
 import { asset } from '@/lib/asset'
 
@@ -15,15 +16,33 @@ export function PageHero({
   description,
   image = '/images/marbles/6.webp',
 }: PageHeroProps) {
+  const sectionRef = useRef<HTMLElement>(null)
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ['start start', 'end start'],
+  })
+
+  const bgY = useTransform(scrollYProgress, [0, 1], ['0%', '20%'])
+  const textY = useTransform(scrollYProgress, [0, 1], ['0%', '15%'])
+  const opacity = useTransform(scrollYProgress, [0, 0.85], [1, 0.3])
+
   return (
-    <section className="relative flex min-h-[42vh] items-end overflow-hidden bg-charcoal sm:min-h-[48vh] md:min-h-[58vh]">
-      <div className="absolute inset-0">
-        <img src={asset(image)} alt="" className="image-polish h-full w-full object-cover" />
-        <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/70 to-charcoal/40" />
-      </div>
+    <section
+      ref={sectionRef}
+      className="relative flex min-h-[44vh] items-end overflow-hidden bg-charcoal sm:min-h-[50vh] md:min-h-[60vh]"
+    >
+      <motion.div style={{ y: bgY }} className="absolute inset-0 scale-105">
+        <img
+          src={asset(image)}
+          alt=""
+          className="image-polish h-full w-full object-cover"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-charcoal/70 to-charcoal/35" />
+      </motion.div>
 
       <div className="container-luxe relative z-10 w-full pb-10 pt-28 sm:pb-14 sm:pt-32 md:pb-20 md:pt-40">
         <motion.div
+          style={{ y: textY, opacity }}
           className="max-w-3xl"
           variants={staggerContainer}
           initial="hidden"

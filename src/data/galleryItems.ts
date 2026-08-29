@@ -2,18 +2,6 @@ import type { GalleryItem } from '@/types'
 import { asset } from '@/lib/asset'
 
 const items: GalleryItem[] = [
-  // Materials — slab photography
-  { id: 'm1', title: 'White Vein Slab', material: 'Natural marble', category: 'Materials', image: '/images/marbles/9.webp' },
-  { id: 'm2', title: 'Nero Marquina', material: 'Black marble', category: 'Materials', image: '/images/marbles/6.webp' },
-  { id: 'm3', title: 'Cream Beige Slab', material: 'Beige marble', category: 'Materials', image: '/images/marbles/2.webp' },
-  { id: 'm4', title: 'Carrara Detail', material: 'Carrara marble', category: 'Materials', image: '/images/marbles/10.webp', wide: true },
-  { id: 'm5', title: 'Marble Cream', material: 'Cream marble', category: 'Materials', image: '/images/marbles/7.webp' },
-  { id: 'm6', title: 'Polished Slab', material: 'Natural stone', category: 'Materials', image: '/images/marbles/1.webp' },
-  { id: 'm7', title: 'Soft Grey Vein', material: 'Natural marble', category: 'Materials', image: '/images/marbles/3.webp' },
-  { id: 'm8', title: 'Warm Stone', material: 'Natural marble', category: 'Materials', image: '/images/marbles/4.webp' },
-  { id: 'm9', title: 'Deep Vein Slab', material: 'Natural marble', category: 'Materials', image: '/images/marbles/5.webp' },
-  { id: 'm10', title: 'Classic White', material: 'Natural marble', category: 'Materials', image: '/images/marbles/8.webp' },
-
   // Project photography
   { id: 'g01', title: 'Viola Marble Floor', material: 'Calacatta Viola', category: 'Flooring', image: '/images/gallery/g01.webp', wide: true },
   { id: 'g02', title: 'Gold Column Detail', material: 'Statuario porcelain', category: 'Bathrooms', image: '/images/gallery/g02.webp' },
@@ -23,7 +11,6 @@ const items: GalleryItem[] = [
   { id: 'g06', title: 'Viola Bathroom Suite', material: 'Calacatta Viola', category: 'Bathrooms', image: '/images/gallery/g06.webp' },
   { id: 'g07', title: 'Book-Matched Enclosure', material: 'Veined porcelain', category: 'Bathrooms', image: '/images/gallery/g07.webp' },
   { id: 'g08', title: 'Stone Feature', material: 'Natural stone', category: 'Cladding', image: '/images/gallery/g08.webp' },
-  { id: 'g09', title: 'Marble Detail', material: 'Natural marble', category: 'Materials', image: '/images/gallery/g09.webp' },
   { id: 'g10', title: 'Stone Installation', material: 'Natural stone', category: 'Cladding', image: '/images/gallery/g10.webp' },
   { id: 'g11', title: 'Chequer Steps', material: 'Black & white tile', category: 'Flooring', image: '/images/gallery/g11.webp' },
   { id: 'g12', title: 'Project Surface', material: 'Natural stone', category: 'Cladding', image: '/images/gallery/g12.webp' },

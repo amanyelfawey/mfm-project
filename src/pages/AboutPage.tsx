@@ -9,7 +9,7 @@ export function AboutPage() {
       <PageHero
         eyebrow="About Us"
         title="Crafted in Stone"
-        description="Two decades of sourcing, cutting, and installing the finest marble and granite."
+        description="Over seven years of dedicated craftsmanship in sourcing, cutting, and installing the finest marble and granite across London."
         image={aboutHeroImg}
       />
       <About hideHeading />

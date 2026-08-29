@@ -6,6 +6,18 @@ export interface NavLink {
   sectionId: string
 }
 
+export interface ProjectItem {
+  id: string
+  title: string
+  category: Exclude<GalleryCategory, 'All'>
+  material: string
+  coverImage: string
+  images: string[]
+  description: string
+  scope?: string[]
+  wide?: boolean
+}
+
 export interface GalleryItem {
   id: string
   title: string

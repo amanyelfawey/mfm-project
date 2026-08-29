@@ -1,41 +1,71 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
-import { motion } from 'framer-motion'
+import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, ArrowRight } from 'lucide-react'
 import { navLinks } from '@/data/navLinks'
-import { useScrollPosition } from '@/hooks/useScrollPosition'
 import { MobileMenu } from '@/components/layout/MobileMenu'
 import { LogoMark } from '@/components/ui/LogoMark'
 
 export function Navbar() {
-  const scrollY = useScrollPosition()
   const { pathname } = useLocation()
+  const { scrollY } = useScroll()
+  const [hidden, setHidden] = useState(false)
+  const [isScrolled, setIsScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
 
   const isHome = pathname === '/'
-  const isScrolled = scrollY > 40 || !isHome
+
+  useMotionValueEvent(scrollY, 'change', (latest) => {
+    const previous = scrollY.getPrevious() ?? 0
+    const diff = latest - previous
+
+    // When near top
+    if (latest < 60) {
+      setHidden(false)
+      setIsScrolled(!isHome)
+      return
+    }
+
+    setIsScrolled(true)
+
+    // Scroll down: hide navbar if moving fast
+    if (diff > 8 && latest > 180) {
+      setHidden(true)
+    } else if (diff < -5) {
+      // Scroll up: reveal navbar
+      setHidden(false)
+    }
+  })
+
+  useEffect(() => {
+    setHidden(false)
+    setIsScrolled(!isHome || window.scrollY > 40)
+  }, [pathname, isHome])
 
   return (
     <>
       <motion.header
-        initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
-        className={`fixed top-0 left-0 right-0 z-50 transition-all duration-700 ${
-          isScrolled || !isHome
-            ? 'bg-charcoal shadow-[0_10px_40px_rgba(0,0,0,0.35)]'
-            : 'bg-charcoal/90 backdrop-blur-md'
+        variants={{
+          visible: { y: 0, opacity: 1 },
+          hidden: { y: '-100%', opacity: 0.8 },
+        }}
+        animate={hidden ? 'hidden' : 'visible'}
+        transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
+        className={`fixed top-0 left-0 right-0 z-50 transition-colors duration-500 ${
+          isScrolled
+            ? 'bg-charcoal/95 shadow-[0_10px_35px_rgba(0,0,0,0.5)] backdrop-blur-md border-b border-gold/15'
+            : 'bg-charcoal/80 backdrop-blur-sm'
         }`}
       >
         <div className="container-luxe flex h-[72px] items-center justify-between gap-3 sm:h-[78px] sm:gap-4 lg:h-[88px] lg:gap-6">
-          <Link to="/" className="flex min-w-0 items-center gap-2 text-white sm:gap-3">
-            <LogoMark className="h-12 w-12 shrink-0 text-gold sm:h-12 sm:w-12" />
+          <Link to="/" className="flex min-w-0 items-center gap-2 text-white sm:gap-3 group">
+            <LogoMark className="h-11 w-11 shrink-0 text-gold transition-transform duration-500 group-hover:scale-105 sm:h-12 sm:w-12" />
             <span className="min-w-0 leading-tight">
               <span className="block truncate font-display text-lg tracking-wide sm:text-xl md:text-2xl">
-                MFM 
+                MFM
               </span>
               <span className="hidden text-[10px] uppercase tracking-[0.22em] text-gold/90 sm:block">
-               Marble &amp; Granite
+                Marble &amp; Granite
               </span>
             </span>
           </Link>

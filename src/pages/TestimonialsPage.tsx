@@ -5,9 +5,9 @@ export function TestimonialsPage() {
   return (
     <>
       <PageHero
-        eyebrow="Our Testimonial"
+        eyebrow="Client Testimonials"
         title="What Our Clients Say"
-        description="Architects, designers, and homeowners on working with MFM Marble & Granite."
+        description="Architects, designers, and homeowners on working with MFM Marble & Granite across London."
         image="/images/marbles/7.webp"
       />
       <Testimonials hideHeader />

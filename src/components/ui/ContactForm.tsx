@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import { useSearchParams } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
 import { zodResolver } from '@hookform/resolvers/zod'
 import { z } from 'zod'
 import { motion } from 'framer-motion'
 import { Check } from 'lucide-react'
-import { PROJECT_TYPES } from '@/lib/constants'
+import { PROJECT_TYPES, type ProjectType } from '@/lib/constants'
 import type { ContactFormData } from '@/types'
 
 const contactSchema = z.object({
@@ -18,22 +19,36 @@ const contactSchema = z.object({
 type FormStatus = 'idle' | 'sending' | 'success' | 'error'
 
 export function ContactForm() {
+  const [searchParams] = useSearchParams()
+  const urlType = searchParams.get('type')
+  const initialType: ProjectType =
+    urlType && (PROJECT_TYPES as readonly string[]).includes(urlType)
+      ? (urlType as ProjectType)
+      : 'Kitchen'
+
   const [status, setStatus] = useState<FormStatus>('idle')
 
   const {
     register,
     handleSubmit,
     reset,
+    setValue,
     formState: { errors },
   } = useForm<ContactFormData>({
     resolver: zodResolver(contactSchema),
-    defaultValues: { projectType: 'Kitchen' },
+    defaultValues: { projectType: initialType },
   })
+
+  useEffect(() => {
+    if (urlType && (PROJECT_TYPES as readonly string[]).includes(urlType)) {
+      setValue('projectType', urlType as ProjectType)
+    }
+  }, [urlType, setValue])
 
   const onSubmit = async (data: ContactFormData) => {
     setStatus('sending')
 
-    // TODO: Replace with real API endpoint — send `data` to backend
+    // Simulated submission delay
     void data
     await new Promise((resolve) => setTimeout(resolve, 1500))
 

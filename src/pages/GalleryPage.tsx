@@ -5,9 +5,9 @@ export function GalleryPage() {
   return (
     <>
       <PageHero
-        eyebrow="Our Collection"
-        title="Selected Works"
-        description="A curated edit of marble slabs, kitchen islands, bathroom suites, cladding, and flooring — stone first, always."
+        eyebrow="Project Portfolio"
+        title="Featured Stone Works"
+        description="A curated portfolio of bespoke marble kitchens, luxury bathroom suites, book-matched cladding, and expansive flooring projects delivered across London."
         image="/images/marbles/9.webp"
       />
       <Gallery hideHeader />

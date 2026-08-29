@@ -10,7 +10,7 @@ export function HomePage() {
   return (
     <>
       <Hero />
-      <About compact />
+      <About />
       <Services />
       <GalleryPreview />
       <Faq />

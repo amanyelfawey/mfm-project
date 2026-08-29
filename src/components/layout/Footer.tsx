@@ -2,6 +2,7 @@ import { Link } from 'react-router-dom'
 import { navLinks } from '@/data/navLinks'
 import { BRAND, CONTACT, SOCIAL } from '@/lib/constants'
 import { LogoMark } from '@/components/ui/LogoMark'
+import { FadeInSection } from '@/components/shared/FadeInSection'
 
 function InstagramIcon({ size = 18 }: { size?: number }) {
   return (
@@ -36,7 +37,7 @@ export function Footer() {
 
       <div className="container-luxe">
         <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
-          <div>
+          <FadeInSection direction="up" delay={0}>
             <div className="flex items-center gap-3 text-white">
               <LogoMark className="h-8 w-8 text-gold" />
               <div>
@@ -45,9 +46,9 @@ export function Footer() {
               </div>
             </div>
             <p className="mt-4 text-sm leading-relaxed text-gray">{BRAND.shortTagline}</p>
-          </div>
+          </FadeInSection>
 
-          <div>
+          <FadeInSection direction="up" delay={0.08}>
             <p className="eyebrow mb-6">Navigation</p>
             <ul className="space-y-3">
               {navLinks.map((link) => (
@@ -62,9 +63,9 @@ export function Footer() {
                 </li>
               ))}
             </ul>
-          </div>
+          </FadeInSection>
 
-          <div>
+          <FadeInSection direction="up" delay={0.16}>
             <p className="eyebrow mb-6">Contact</p>
             <ul className="space-y-3 text-sm text-gray">
               <li>
@@ -85,11 +86,20 @@ export function Footer() {
                   {CONTACT.phoneDisplay}
                 </a>
               </li>
+              <li>
+                <a
+                  href={`tel:${CONTACT.phone2.replace(/\s/g, '')}`}
+                  className="transition-colors duration-600 hover:text-gold"
+                  style={{ transitionTimingFunction: 'var(--ease-luxe)' }}
+                >
+                  {CONTACT.phone2Display}
+                </a>
+              </li>
               <li>{CONTACT.address}</li>
             </ul>
-          </div>
+          </FadeInSection>
 
-          <div>
+          <FadeInSection direction="up" delay={0.24}>
             <p className="eyebrow mb-6">Follow</p>
             <div className="flex gap-5">
               <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-gold" aria-label="Instagram">
@@ -102,17 +112,17 @@ export function Footer() {
                 <LinkedinIcon />
               </a>
             </div>
-          </div>
+          </FadeInSection>
         </div>
 
-        <div className="relative mt-12 overflow-hidden sm:mt-20">
+        <FadeInSection direction="none" blur delay={0.2} className="relative mt-12 overflow-hidden sm:mt-20">
           <p
             className="pointer-events-none select-none text-center font-display text-[14vw] font-light leading-none text-white/[0.04] sm:text-[11vw]"
             aria-hidden="true"
           >
             MFM
           </p>
-        </div>
+        </FadeInSection>
 
         <div className="hairline my-10" />
 
