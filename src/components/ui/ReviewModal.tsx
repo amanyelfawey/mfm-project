@@ -119,15 +119,15 @@ export function ReviewModal({ isOpen, onClose, onSubmitReview }: ReviewModalProp
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
-          className="fixed inset-0 z-[110] flex items-center justify-center overflow-y-auto bg-black/80 p-4 backdrop-blur-md sm:p-6"
+          className="fixed inset-0 z-[110] flex items-center justify-center overflow-y-auto bg-black/80 p-3 xs:p-4 sm:p-6 backdrop-blur-md"
           onClick={onClose}
         >
           <motion.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            transition={{ duration: 0.4, ease: [0.16, 1, 0.3, 1] }}
-            className="relative my-8 w-full max-w-lg overflow-hidden rounded-sm border border-gold/40 bg-[#faf9f7] p-6 shadow-2xl text-black sm:p-8"
+            transition={{ duration: 0.35, ease: [0.16, 1, 0.3, 1] }}
+            className="relative my-6 w-full max-w-lg max-h-[90svh] overflow-y-auto rounded-sm border border-gold/40 bg-[#faf9f7] p-5 shadow-2xl text-black sm:p-8"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Top gold accent line */}
@@ -137,7 +137,7 @@ export function ReviewModal({ isOpen, onClose, onSubmitReview }: ReviewModalProp
             <button
               type="button"
               onClick={onClose}
-              className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-black/10 text-charcoal transition-colors hover:border-gold hover:bg-gold hover:text-white"
+              className="absolute right-3.5 top-3.5 sm:right-4 sm:top-4 flex h-10 w-10 items-center justify-center rounded-full border border-black/10 text-charcoal transition-colors hover:border-gold hover:bg-gold hover:text-white cursor-pointer"
               aria-label="Close review modal"
             >
               <X size={18} />
@@ -147,12 +147,12 @@ export function ReviewModal({ isOpen, onClose, onSubmitReview }: ReviewModalProp
               <motion.div
                 initial={{ opacity: 0, y: 15 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="flex flex-col items-center py-8 text-center"
+                className="flex flex-col items-center py-6 sm:py-8 text-center"
               >
-                <div className="flex h-16 w-16 items-center justify-center rounded-full border-2 border-gold bg-gold/10 text-gold shadow-sm">
-                  <Check size={32} strokeWidth={2} />
+                <div className="flex h-14 w-14 sm:h-16 sm:w-16 items-center justify-center rounded-full border-2 border-gold bg-gold/10 text-gold shadow-sm">
+                  <Check size={28} strokeWidth={2} />
                 </div>
-                <h3 className="mt-5 font-display text-2xl font-light text-charcoal sm:text-3xl">
+                <h3 className="mt-4 sm:mt-5 font-display text-xl font-light text-charcoal sm:text-3xl">
                   Thank You for Your Feedback
                 </h3>
                 <p className="mt-2 max-w-sm text-xs font-light leading-relaxed text-gray sm:text-sm">
@@ -167,14 +167,14 @@ export function ReviewModal({ isOpen, onClose, onSubmitReview }: ReviewModalProp
             ) : (
               <div>
                 {/* Header */}
-                <div className="mb-6">
+                <div className="mb-5 sm:mb-6 pr-8">
                   <div className="flex items-center gap-2">
-                    <Sparkles size={16} className="text-gold" />
-                    <p className="text-[10px] uppercase tracking-[0.24em] text-gold font-medium">
+                    <Sparkles size={15} className="text-gold" />
+                    <p className="text-[9.5px] uppercase tracking-[0.24em] text-gold font-medium sm:text-[10px]">
                       Client Feedback
                     </p>
                   </div>
-                  <h3 className="mt-1 font-display text-2xl font-light text-charcoal sm:text-3xl">
+                  <h3 className="mt-1 font-display text-xl font-light text-charcoal sm:text-3xl">
                     Share Your Experience
                   </h3>
                   <p className="mt-1 text-xs font-light text-gray">
@@ -194,7 +194,7 @@ export function ReviewModal({ isOpen, onClose, onSubmitReview }: ReviewModalProp
                     <label className="block text-[11px] uppercase tracking-[0.15em] text-gray mb-1.5">
                       Your Rating
                     </label>
-                    <div className="flex items-center gap-1.5">
+                    <div className="flex items-center gap-1">
                       {[1, 2, 3, 4, 5].map((star) => (
                         <button
                           key={star}
@@ -202,11 +202,11 @@ export function ReviewModal({ isOpen, onClose, onSubmitReview }: ReviewModalProp
                           onClick={() => setRating(star)}
                           onMouseEnter={() => setHoverRating(star)}
                           onMouseLeave={() => setHoverRating(null)}
-                          className="p-1 transition-transform hover:scale-110"
+                          className="p-1.5 transition-transform hover:scale-110 cursor-pointer touch-manipulation"
                           aria-label={`Rate ${star} star${star > 1 ? 's' : ''}`}
                         >
                           <Star
-                            size={24}
+                            size={22}
                             className={`transition-colors ${
                               (hoverRating !== null ? star <= hoverRating : star <= rating)
                                 ? 'fill-gold text-gold'
@@ -235,7 +235,7 @@ export function ReviewModal({ isOpen, onClose, onSubmitReview }: ReviewModalProp
                         setName(e.target.value)
                         if (error) setError('')
                       }}
-                      className="form-input text-sm"
+                      className="form-input"
                       required
                     />
                   </div>
@@ -249,7 +249,7 @@ export function ReviewModal({ isOpen, onClose, onSubmitReview }: ReviewModalProp
                       id="review-projectType"
                       value={projectType}
                       onChange={(e) => setProjectType(e.target.value)}
-                      className="form-input cursor-pointer appearance-none bg-transparent text-sm"
+                      className="form-input cursor-pointer appearance-none bg-transparent"
                     >
                       {DEFAULT_PROJECT_TYPES.map((type) => (
                         <option key={type} value={type}>
@@ -265,7 +265,7 @@ export function ReviewModal({ isOpen, onClose, onSubmitReview }: ReviewModalProp
                         placeholder="Enter project type (e.g. Bespoke Fireplace in Kensington)"
                         value={customProjectType}
                         onChange={(e) => setCustomProjectType(e.target.value)}
-                        className="form-input mt-2 text-sm"
+                        className="form-input mt-2"
                       />
                     )}
                   </div>
@@ -281,7 +281,7 @@ export function ReviewModal({ isOpen, onClose, onSubmitReview }: ReviewModalProp
                       placeholder="Tell us about the stone quality, craftsmanship, and service..."
                       value={quote}
                       onChange={(e) => setQuote(e.target.value)}
-                      className="form-input resize-none text-sm"
+                      className="form-input resize-none"
                     />
                   </div>
 

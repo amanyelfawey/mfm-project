@@ -90,23 +90,23 @@ export function Testimonials({
       <div className="container-luxe relative z-10">
         {!hideHeader && (
           <div className="mb-8 flex flex-col gap-5 sm:mb-12 sm:gap-6 md:mb-14 md:flex-row md:items-end md:justify-between">
-            <FadeInSection>
-              <div className="mb-4 flex items-center gap-4">
+            <FadeInSection direction="down">
+              <div className="mb-3 sm:mb-4 flex items-center gap-3 sm:gap-4">
                 <span className="h-px w-8 bg-gold sm:w-10" />
                 <p className="text-xs uppercase tracking-[0.22em] text-gold">Client Testimonials</p>
               </div>
-              <h2 className="font-display text-3xl font-light text-charcoal sm:text-4xl md:text-5xl lg:text-6xl">
+              <h2 className="font-display text-2xl font-light text-charcoal sm:text-4xl md:text-5xl lg:text-6xl">
                 What Our Clients Say
               </h2>
             </FadeInSection>
 
-            <div className="flex flex-wrap items-center gap-3">
+            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
               {/* Leave a Review Button */}
               <FadeInSection delay={0.05}>
                 <button
                   type="button"
                   onClick={() => setIsReviewModalOpen(true)}
-                  className="btn-gold flex items-center gap-2 !py-2.5 !text-[11px] shadow-sm"
+                  className="btn-gold flex items-center gap-2 !py-2.5 !text-[10.5px] sm:!text-[11px] shadow-sm cursor-pointer"
                 >
                   <PenLine size={14} />
                   <span>Leave a Review</span>
@@ -115,19 +115,19 @@ export function Testimonials({
 
               {showViewMore && (
                 <FadeInSection delay={0.1}>
-                  <Link to="/testimonials" className="btn-dark w-full sm:w-auto !py-2.5 !text-[11px]">
-                    View More
+                  <Link to="/testimonials" className="btn-dark w-full sm:w-auto !py-2.5 !text-[10.5px] sm:!text-[11px]">
+                    <span>View More</span>
                     <ArrowRight size={14} />
                   </Link>
                 </FadeInSection>
               )}
 
               {/* Header Navigation Arrows (Desktop & Mobile) */}
-              <FadeInSection delay={0.15} className="flex items-center gap-2">
+              <FadeInSection delay={0.15} className="flex items-center gap-1.5 sm:gap-2">
                 <button
                   type="button"
                   onClick={() => paginate(-1)}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-black/15 bg-white text-charcoal shadow-sm transition-all duration-300 hover:border-gold hover:bg-gold hover:text-white"
+                  className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-black/15 bg-white text-charcoal shadow-sm transition-all duration-300 hover:border-gold hover:bg-gold hover:text-white cursor-pointer"
                   aria-label="Previous testimonial"
                 >
                   <ChevronLeft size={18} strokeWidth={1.75} />
@@ -135,7 +135,7 @@ export function Testimonials({
                 <button
                   type="button"
                   onClick={() => paginate(1)}
-                  className="flex h-10 w-10 items-center justify-center rounded-full border border-black/15 bg-white text-charcoal shadow-sm transition-all duration-300 hover:border-gold hover:bg-gold hover:text-white"
+                  className="flex h-10 w-10 sm:h-11 sm:w-11 items-center justify-center rounded-full border border-black/15 bg-white text-charcoal shadow-sm transition-all duration-300 hover:border-gold hover:bg-gold hover:text-white cursor-pointer"
                   aria-label="Next testimonial"
                 >
                   <ChevronRight size={18} strokeWidth={1.75} />
@@ -147,7 +147,7 @@ export function Testimonials({
 
         {/* When header is hidden (e.g. on TestimonialsPage), show a Leave Review top bar */}
         {hideHeader && (
-          <div className="mb-8 flex items-center justify-between border-b border-black/10 pb-6">
+          <div className="mb-8 flex flex-wrap items-center justify-between gap-4 border-b border-black/10 pb-6">
             <div>
               <p className="text-xs uppercase tracking-[0.2em] text-gold">Reviews</p>
               <h2 className="font-display text-2xl font-light text-charcoal sm:text-3xl">
@@ -157,7 +157,7 @@ export function Testimonials({
             <button
               type="button"
               onClick={() => setIsReviewModalOpen(true)}
-              className="btn-gold flex items-center gap-2 !py-2.5 !text-[11px] shadow-sm"
+              className="btn-gold flex items-center gap-2 !py-2.5 !text-[11px] shadow-sm cursor-pointer"
             >
               <PenLine size={14} />
               <span>Leave a Review</span>
@@ -192,10 +192,10 @@ export function Testimonials({
                       paginate(-1)
                     }
                   }}
-                  className="relative grid cursor-grab items-center gap-6 bg-white p-6 shadow-[0_24px_60px_rgba(0,0,0,0.06)] active:cursor-grabbing sm:gap-8 sm:p-8 md:grid-cols-[200px_1fr] md:gap-10 md:p-10 lg:grid-cols-[240px_1fr] lg:gap-12 lg:p-12"
+                  className="relative grid cursor-grab items-center gap-5 bg-white p-5 shadow-[0_20px_50px_rgba(0,0,0,0.06)] active:cursor-grabbing sm:gap-8 sm:p-8 md:grid-cols-[180px_1fr] md:gap-10 md:p-10 lg:grid-cols-[220px_1fr] lg:gap-12 lg:p-12"
                 >
                   {/* Portrait / Client Project */}
-                  <div className="relative mx-auto aspect-square w-32 overflow-hidden rounded-sm border border-gold/30 shadow-md sm:w-44 md:mx-0 md:w-full">
+                  <div className="relative mx-auto aspect-square w-24 xs:w-28 overflow-hidden rounded-sm border border-gold/30 shadow-md sm:w-36 md:mx-0 md:w-full">
                     <img
                       src={active.image}
                       alt={active.name}
@@ -208,19 +208,19 @@ export function Testimonials({
                   {/* Content */}
                   <div className="relative text-center md:text-left">
                     {/* Stars */}
-                    <div className="mb-4 flex justify-center gap-1 md:justify-start">
+                    <div className="mb-3 sm:mb-4 flex justify-center gap-1 md:justify-start">
                       {Array.from({ length: active.rating ?? 5 }).map((_, i) => (
                         <Star key={i} size={15} className="fill-gold text-gold" />
                       ))}
                     </div>
 
-                    <blockquote className="max-w-3xl font-display text-lg font-light leading-relaxed text-charcoal sm:text-xl md:text-2xl">
+                    <blockquote className="max-w-3xl font-display text-base font-light leading-relaxed text-charcoal sm:text-xl md:text-2xl">
                       &ldquo;{active.quote}&rdquo;
                     </blockquote>
 
-                    <div className="mt-6 border-t border-black/10 pt-4 sm:mt-8">
+                    <div className="mt-5 border-t border-black/10 pt-3.5 sm:mt-7 sm:pt-4">
                       <p className="text-base font-medium text-charcoal sm:text-lg">{active.name}</p>
-                      <p className="mt-1 text-[10px] uppercase tracking-[0.16em] text-gold sm:text-[11px] sm:tracking-[0.18em]">
+                      <p className="mt-0.5 text-[10px] uppercase tracking-[0.16em] text-gold sm:text-[11px] sm:tracking-[0.18em]">
                         {active.projectType}
                       </p>
                     </div>
@@ -239,7 +239,7 @@ export function Testimonials({
               <button
                 type="button"
                 onClick={() => paginate(-1)}
-                className="absolute left-2 top-1/2 -translate-y-1/2 hidden md:flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-charcoal shadow-md backdrop-blur-sm transition-all hover:bg-gold hover:text-white"
+                className="absolute left-2 top-1/2 -translate-y-1/2 hidden md:flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-charcoal shadow-md backdrop-blur-sm transition-all hover:bg-gold hover:text-white cursor-pointer"
                 aria-label="Previous testimonial"
               >
                 <ChevronLeft size={20} strokeWidth={1.75} />
@@ -247,7 +247,7 @@ export function Testimonials({
               <button
                 type="button"
                 onClick={() => paginate(1)}
-                className="absolute right-2 top-1/2 -translate-y-1/2 hidden md:flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-charcoal shadow-md backdrop-blur-sm transition-all hover:bg-gold hover:text-white"
+                className="absolute right-2 top-1/2 -translate-y-1/2 hidden md:flex h-10 w-10 items-center justify-center rounded-full bg-white/90 text-charcoal shadow-md backdrop-blur-sm transition-all hover:bg-gold hover:text-white cursor-pointer"
                 aria-label="Next testimonial"
               >
                 <ChevronRight size={20} strokeWidth={1.75} />
@@ -256,7 +256,7 @@ export function Testimonials({
           </FadeInSection>
 
           {/* Bottom Bar: Indicators + Mobile Navigation Buttons + Counter */}
-          <div className="mt-8 flex flex-wrap items-center justify-between gap-4 sm:mt-10">
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 sm:mt-8">
             {/* Counter */}
             <div className="text-xs font-light tracking-widest text-charcoal/60">
               <span className="font-display text-base font-medium text-charcoal">
@@ -266,28 +266,28 @@ export function Testimonials({
             </div>
 
             {/* Pagination Lines/Dots */}
-            <div className="flex items-center gap-2 sm:gap-3">
+            <div className="flex items-center gap-1.5 sm:gap-3">
               {items.map((item, i) => (
                 <button
                   key={item.id}
                   type="button"
                   onClick={() => goTo(i)}
                   aria-label={`Go to testimonial ${i + 1}`}
-                  className={`h-1.5 transition-all duration-500 ${
+                  className={`h-1.5 transition-all duration-500 cursor-pointer ${
                     i === current
-                      ? 'w-10 bg-gold'
-                      : 'w-4 bg-gold/30 hover:bg-gold/60'
+                      ? 'w-8 sm:w-10 bg-gold'
+                      : 'w-3.5 sm:w-4 bg-gold/30 hover:bg-gold/60'
                   }`}
                 />
               ))}
             </div>
 
             {/* Mobile / Direct Navigation Controls */}
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1.5 sm:gap-2">
               <button
                 type="button"
                 onClick={() => paginate(-1)}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-black/15 bg-white text-charcoal shadow-sm transition-all hover:border-gold hover:bg-gold hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-black/15 bg-white text-charcoal shadow-sm transition-all hover:border-gold hover:bg-gold hover:text-white cursor-pointer"
                 aria-label="Previous slide"
               >
                 <ChevronLeft size={16} />
@@ -295,7 +295,7 @@ export function Testimonials({
               <button
                 type="button"
                 onClick={() => paginate(1)}
-                className="flex h-9 w-9 items-center justify-center rounded-full border border-black/15 bg-white text-charcoal shadow-sm transition-all hover:border-gold hover:bg-gold hover:text-white"
+                className="flex h-9 w-9 items-center justify-center rounded-full border border-black/15 bg-white text-charcoal shadow-sm transition-all hover:border-gold hover:bg-gold hover:text-white cursor-pointer"
                 aria-label="Next slide"
               >
                 <ChevronRight size={16} />

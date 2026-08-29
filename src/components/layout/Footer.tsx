@@ -32,11 +32,11 @@ function PinterestIcon({ size = 18 }: { size?: number }) {
 
 export function Footer() {
   return (
-    <footer className="relative overflow-hidden bg-black pt-20 pb-10">
-      <div className="hairline mb-16" />
+    <footer className="relative overflow-hidden bg-black pt-16 pb-8 sm:pt-20 sm:pb-10">
+      <div className="hairline mb-12 sm:mb-16" />
 
       <div className="container-luxe">
-        <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-4">
+        <div className="grid gap-10 sm:gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-4">
           <FadeInSection direction="up" delay={0}>
             <div className="flex items-center gap-3 text-white">
               <LogoMark className="h-8 w-8 text-gold" />
@@ -45,12 +45,12 @@ export function Footer() {
                 <p className="text-[10px] uppercase tracking-[0.2em] text-gold">&amp; Granite</p>
               </div>
             </div>
-            <p className="mt-4 text-sm leading-relaxed text-gray">{BRAND.shortTagline}</p>
+            <p className="mt-4 text-sm leading-relaxed text-gray max-w-sm">{BRAND.shortTagline}</p>
           </FadeInSection>
 
           <FadeInSection direction="up" delay={0.08}>
-            <p className="eyebrow mb-6">Navigation</p>
-            <ul className="space-y-3">
+            <p className="eyebrow mb-4 sm:mb-6">Navigation</p>
+            <ul className="space-y-2.5 sm:space-y-3">
               {navLinks.map((link) => (
                 <li key={link.sectionId}>
                   <Link
@@ -66,12 +66,12 @@ export function Footer() {
           </FadeInSection>
 
           <FadeInSection direction="up" delay={0.16}>
-            <p className="eyebrow mb-6">Contact</p>
-            <ul className="space-y-3 text-sm text-gray">
+            <p className="eyebrow mb-4 sm:mb-6">Contact</p>
+            <ul className="space-y-2.5 sm:space-y-3 text-sm text-gray">
               <li>
                 <a
                   href={`mailto:${CONTACT.email}`}
-                  className="transition-colors duration-600 hover:text-gold"
+                  className="transition-colors duration-600 hover:text-gold break-all"
                   style={{ transitionTimingFunction: 'var(--ease-luxe)' }}
                 >
                   {CONTACT.email}
@@ -95,27 +95,27 @@ export function Footer() {
                   {CONTACT.phone2Display}
                 </a>
               </li>
-              <li>{CONTACT.address}</li>
+              <li className="leading-relaxed">{CONTACT.address}</li>
             </ul>
           </FadeInSection>
 
           <FadeInSection direction="up" delay={0.24}>
-            <p className="eyebrow mb-6">Follow</p>
-            <div className="flex gap-5">
-              <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-gold" aria-label="Instagram">
+            <p className="eyebrow mb-4 sm:mb-6">Follow</p>
+            <div className="flex gap-4 sm:gap-5">
+              <a href={SOCIAL.instagram} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-gray transition-colors hover:border-gold hover:text-gold" aria-label="Instagram">
                 <InstagramIcon />
               </a>
-              <a href={SOCIAL.pinterest} target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-gold" aria-label="Pinterest">
+              <a href={SOCIAL.pinterest} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-gray transition-colors hover:border-gold hover:text-gold" aria-label="Pinterest">
                 <PinterestIcon />
               </a>
-              <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" className="text-gray transition-colors hover:text-gold" aria-label="LinkedIn">
+              <a href={SOCIAL.linkedin} target="_blank" rel="noopener noreferrer" className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 text-gray transition-colors hover:border-gold hover:text-gold" aria-label="LinkedIn">
                 <LinkedinIcon />
               </a>
             </div>
           </FadeInSection>
         </div>
 
-        <FadeInSection direction="none" blur delay={0.2} className="relative mt-12 overflow-hidden sm:mt-20">
+        <FadeInSection direction="none" blur delay={0.2} className="relative mt-10 overflow-hidden sm:mt-16">
           <p
             className="pointer-events-none select-none text-center font-display text-[14vw] font-light leading-none text-white/[0.04] sm:text-[11vw]"
             aria-hidden="true"
@@ -124,7 +124,7 @@ export function Footer() {
           </p>
         </FadeInSection>
 
-        <div className="hairline my-10" />
+        <div className="hairline my-8 sm:my-10" />
 
         <p className="text-center text-xs tracking-[0.1em] text-gray">
           &copy; {new Date().getFullYear()} MFM Marble &amp; Granite. All rights reserved.

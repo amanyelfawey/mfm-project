@@ -21,12 +21,12 @@ export function SectionHeading({
 
   return (
     <FadeInSection className={`max-w-2xl ${alignClass}`}>
-      <p className="eyebrow mb-6">{eyebrow}</p>
-      <h2 className={`text-4xl md:text-6xl font-display font-light ${textColor} mb-6`}>
+      <p className="eyebrow mb-3 sm:mb-5">{eyebrow}</p>
+      <h2 className={`text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-display font-light ${textColor} mb-4 sm:mb-6`}>
         {title}
       </h2>
       {description && (
-        <p className={`text-lg font-light leading-relaxed ${descColor}`}>{description}</p>
+        <p className={`text-sm sm:text-base md:text-lg font-light leading-relaxed ${descColor}`}>{description}</p>
       )}
     </FadeInSection>
   )

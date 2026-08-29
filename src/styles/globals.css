@@ -35,12 +35,14 @@
 
   html {
     scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
   }
 
   html,
   body {
     max-width: 100%;
     overflow-x: hidden;
+    position: relative;
   }
 
   body {
@@ -60,11 +62,16 @@
   iframe {
     max-width: 100%;
     height: auto;
+    display: block;
   }
 
   button,
-  a {
+  a,
+  input,
+  select,
+  textarea {
     -webkit-tap-highlight-color: transparent;
+    touch-action: manipulation;
   }
 
   h1,
@@ -75,6 +82,8 @@
     letter-spacing: -0.02em;
     font-weight: 300;
     line-height: 1.1;
+    overflow-wrap: break-word;
+    word-break: break-word;
   }
 
   ::selection {
@@ -94,21 +103,21 @@
   }
 
   .section-pad {
-    padding-top: 64px;
-    padding-bottom: 64px;
+    padding-top: 56px;
+    padding-bottom: 56px;
   }
 
   @media (min-width: 640px) {
     .section-pad {
-      padding-top: 96px;
-      padding-bottom: 96px;
+      padding-top: 80px;
+      padding-bottom: 80px;
     }
   }
 
   @media (min-width: 1024px) {
     .section-pad {
-      padding-top: 140px;
-      padding-bottom: 140px;
+      padding-top: 120px;
+      padding-bottom: 120px;
     }
   }
 
@@ -116,31 +125,42 @@
     width: 100%;
     max-width: 1600px;
     margin-inline: auto;
-    padding-inline: max(16px, env(safe-area-inset-left));
+    padding-left: max(16px, env(safe-area-inset-left));
     padding-right: max(16px, env(safe-area-inset-right));
   }
 
   @media (min-width: 480px) {
     .container-luxe {
-      padding-inline: 24px;
+      padding-left: max(20px, env(safe-area-inset-left));
+      padding-right: max(20px, env(safe-area-inset-right));
+    }
+  }
+
+  @media (min-width: 640px) {
+    .container-luxe {
+      padding-left: max(28px, env(safe-area-inset-left));
+      padding-right: max(28px, env(safe-area-inset-right));
     }
   }
 
   @media (min-width: 768px) {
     .container-luxe {
-      padding-inline: 40px;
+      padding-left: max(36px, env(safe-area-inset-left));
+      padding-right: max(36px, env(safe-area-inset-right));
     }
   }
 
   @media (min-width: 1024px) {
     .container-luxe {
-      padding-inline: 64px;
+      padding-left: max(56px, env(safe-area-inset-left));
+      padding-right: max(56px, env(safe-area-inset-right));
     }
   }
 
   @media (min-width: 1280px) {
     .container-luxe {
-      padding-inline: 80px;
+      padding-left: max(72px, env(safe-area-inset-left));
+      padding-right: max(72px, env(safe-area-inset-right));
     }
   }
 
@@ -190,9 +210,9 @@
     display: inline-flex;
     align-items: center;
     justify-content: center;
-    gap: 10px;
+    gap: 8px;
     min-height: 44px;
-    padding: 12px 22px;
+    padding: 12px 20px;
     font-family: var(--font-sans);
     font-size: 11px;
     font-weight: 500;
@@ -201,17 +221,20 @@
     border: none;
     cursor: pointer;
     white-space: nowrap;
+    text-align: center;
     transition:
-      background-color 0.5s var(--ease-luxe),
-      color 0.5s var(--ease-luxe),
-      letter-spacing 0.5s var(--ease-luxe);
+      background-color 0.4s var(--ease-luxe),
+      color 0.4s var(--ease-luxe),
+      letter-spacing 0.4s var(--ease-luxe),
+      transform 0.2s ease;
   }
 
   @media (min-width: 640px) {
     .btn-gold,
     .btn-dark,
     .btn-outline {
-      padding: 14px 32px;
+      gap: 10px;
+      padding: 14px 28px;
       font-size: var(--text-xs);
       letter-spacing: 0.14em;
     }
@@ -224,7 +247,7 @@
 
   .btn-gold:hover {
     background-color: var(--color-gold-light);
-    letter-spacing: 0.16em;
+    letter-spacing: 0.15em;
   }
 
   .btn-dark {
@@ -234,7 +257,7 @@
 
   .btn-dark:hover {
     background-color: var(--color-black);
-    letter-spacing: 0.16em;
+    letter-spacing: 0.15em;
   }
 
   .btn-outline {
@@ -263,15 +286,22 @@
 
   .form-input {
     width: 100%;
+    min-height: 44px;
     padding: 12px 0;
     font-family: var(--font-sans);
-    font-size: var(--text-base);
+    font-size: 16px; /* Prevents iOS auto-zoom on input focus */
     color: var(--color-black);
     background: transparent;
     border: none;
     border-bottom: 1px solid color-mix(in srgb, var(--color-black) 20%, transparent);
     outline: none;
-    transition: border-color 0.6s var(--ease-luxe);
+    transition: border-color 0.4s var(--ease-luxe);
+  }
+
+  @media (min-width: 640px) {
+    .form-input {
+      font-size: var(--text-base);
+    }
   }
 
   .form-input:focus {
@@ -280,7 +310,7 @@
 
   .form-label {
     display: block;
-    margin-bottom: 8px;
+    margin-bottom: 6px;
     font-size: var(--text-xs);
     letter-spacing: 0.15em;
     text-transform: uppercase;
