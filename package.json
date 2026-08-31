@@ -7,10 +7,11 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
+    "build:gh-pages": "tsc -b && vite build --base /mfm-project/",
     "lint": "eslint .",
     "preview": "vite preview",
-      "predeploy": "npm run build",
-"deploy": "gh-pages -d dist"
+    "predeploy": "npm run build:gh-pages",
+    "deploy": "gh-pages -d dist"
   },
   "dependencies": {
     "@hookform/resolvers": "^5.7.1",

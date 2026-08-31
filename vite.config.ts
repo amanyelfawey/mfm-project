@@ -6,12 +6,14 @@ import { fileURLToPath } from 'url'
 
 const __dirname = path.dirname(fileURLToPath(import.meta.url))
 
-export default defineConfig(({ command }) => ({
-  base: command === 'build' ? '/mfm-project/' : '/',
+// Use `/` for custom domains (e.g. mfm-contractors.com).
+// Set VITE_BASE_PATH=/mfm-project/ only when deploying to GitHub Pages subpath.
+export default defineConfig({
+  base: process.env.VITE_BASE_PATH ?? '/',
   plugins: [react(), tailwindcss()],
   resolve: {
     alias: {
       '@': path.resolve(__dirname, './src'),
     },
   },
-}))
+})
