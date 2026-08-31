@@ -7,7 +7,7 @@ export const BRAND = {
 } as const
 
 export const CONTACT = {
-  email: 'info@mfm-marble.uk',
+  email: 'info@mfm-contractors.com',
   phone: '+44 7459 123331',
   phoneDisplay: '+44 7459 123331',
   phone2: '02070974818',
