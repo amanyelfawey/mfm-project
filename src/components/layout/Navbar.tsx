@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useLayoutEffect } from 'react'
 import { Link, NavLink, useLocation } from 'react-router-dom'
 import { motion, useScroll, useMotionValueEvent } from 'framer-motion'
 import { Menu, ArrowRight } from 'lucide-react'
@@ -37,9 +37,12 @@ export function Navbar() {
     }
   })
 
-  useEffect(() => {
-    setHidden(false)
-    setIsScrolled(!isHome || window.scrollY > 40)
+  // Reset hidden state when route changes
+  useLayoutEffect(() => {
+    queueMicrotask(() => {
+      setHidden(false)
+      setIsScrolled(!isHome || window.scrollY > 40)
+    })
   }, [pathname, isHome])
 
   return (
@@ -57,7 +60,7 @@ export function Navbar() {
             : 'bg-charcoal/85 backdrop-blur-sm'
         }`}
       >
-        <div className="container-luxe flex h-[68px] items-center justify-between gap-2 sm:h-[78px] sm:gap-4 lg:h-[88px] lg:gap-6">
+        <div className="container-luxe flex h-17 items-center justify-between gap-2 sm:h-19.5 sm:gap-4 lg:h-22 lg:gap-6">
           <Link to="/" className="flex min-w-0 items-center gap-2 text-white sm:gap-3 group">
             <LogoMark className="h-9 w-9 shrink-0 text-gold transition-transform duration-500 group-hover:scale-105 sm:h-11 sm:w-11 lg:h-12 lg:w-12" />
             <span className="min-w-0 leading-tight">
@@ -88,7 +91,7 @@ export function Navbar() {
           <div className="flex shrink-0 items-center gap-1.5 sm:gap-3">
             <Link
               to="/contact"
-              className="btn-gold !min-h-[38px] !px-3 !py-1.5 text-[10px] sm:!min-h-11 sm:!px-5 sm:text-xs lg:inline-flex"
+              className="btn-gold min-h-9.5! px-3! py-1.5! text-[10px] sm:min-h-11! sm:px-5! sm:text-xs lg:inline-flex"
             >
               <span className="hidden xs:inline sm:inline">Get a Quote</span>
               <span className="xs:hidden">Quote</span>
