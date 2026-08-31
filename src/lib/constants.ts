@@ -19,8 +19,6 @@ export const CONTACT = {
 
 export const SOCIAL = {
   instagram: 'https://instagram.com',
-  pinterest: 'https://pinterest.com',
-  linkedin: 'https://linkedin.com',
 } as const
 
 export const STATS = [
